@@ -15,6 +15,8 @@ import com.atlassian.seraph.auth.DefaultAuthenticator;
 import com.atlassian.seraph.config.SecurityConfigFactory;
 import com.bitium.jira.config.SAMLJiraConfig;
 import com.bitium.saml.servlet.SsoLoginServlet;
+import com.atlassian.sal.api.pluginsettings.PluginSettings;
+import com.atlassian.sal.api.pluginsettings.PluginSettingsFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
