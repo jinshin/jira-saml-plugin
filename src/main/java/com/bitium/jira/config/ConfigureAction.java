@@ -9,6 +9,8 @@ import com.atlassian.crowd.embedded.api.Group;
 import com.atlassian.jira.component.ComponentAccessor;
 import com.atlassian.jira.security.groups.GroupManager;
 import org.apache.commons.lang.StringUtils;
+import com.atlassian.sal.api.pluginsettings.PluginSettings;
+import com.atlassian.sal.api.pluginsettings.PluginSettingsFactory;
 
 import com.atlassian.jira.web.action.JiraWebActionSupport;
 import com.bitium.saml.X509Utils;
@@ -35,8 +37,10 @@ public class ConfigureAction extends JiraWebActionSupport {
 		this.saml2Config = saml2Config;
 	}
 
-	public ConfigureAction() {
-	}
+        public ConfigureAction(PluginSettingsFactory pluginSettingsFactory) {
+	    saml2Config = new SAMLJiraConfig();
+            saml2Config.setPluginSettingsFactory(pluginSettingsFactory);
+        }
 
 	public String getIdpRequired() {
 		return idpRequired;
