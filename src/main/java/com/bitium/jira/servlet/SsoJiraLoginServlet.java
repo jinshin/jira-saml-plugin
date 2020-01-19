@@ -22,6 +22,11 @@ import java.lang.reflect.Method;
 
 
 public class SsoJiraLoginServlet extends SsoLoginServlet {
+	
+	public SsoJiraLoginServlet (PluginSettingsFactory pluginSettingsFactory) {
+	    saml2Config = new SAMLJiraConfig();
+            saml2Config.setPluginSettingsFactory(pluginSettingsFactory);
+        }
 
 	protected void authenticateUserAndLogin(HttpServletRequest request,
 			HttpServletResponse response, String username)
