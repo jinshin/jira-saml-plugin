@@ -1,5 +1,9 @@
 AJS.$(function() {
-    setTimeout(function() {
+
+ 	if (location.pathname == "/secure/Logout!default.jspa") {
+		doLogout();
+        };
+
         if (AJS.$("#login-form").length) {
             loadCorpLogin(AJS.$("#login-form"));
         } else if (AJS.$("#loginform").length) {
@@ -13,8 +17,23 @@ AJS.$(function() {
                     loadCorpLogin(loginForm);
                 });
             });
-        } // Your code here
-    }, 0);
+        } 
+
+    function doLogout() {
+                //alert("Logout");
+                AJS.$.ajax({
+                    url: AJS.contextPath() + "/plugins/servlet/saml/getajaxconfig?param=logoutUrl",
+                    type: "GET",
+                    error: function() {},
+                    success: function(response) {
+                        if (response != "") {
+                            //AJS.$('<p>Please wait while we redirect you to your company log out page</p>').insertBefore(loginForm);
+                            window.location.href = response;
+                            return;
+                        }
+                    }
+                });
+    }
 
     function loadCorpLogin(loginForm) {
         if (loginForm.length == 1) {
@@ -40,22 +59,6 @@ AJS.$(function() {
                     AJS.$(message).insertBefore(loginForm);
                 }
             });
-
-            if (location.search == '?logout=true') {
-                $.ajax({
-                    url: AJS.contextPath() + "/plugins/servlet/saml/getajaxconfig?param=logoutUrl",
-                    type: "GET",
-                    error: function() {},
-                    success: function(response) {
-                        if (response != "") {
-                            AJS.$('<p>Please wait while we redirect you to your company log out page</p>').insertBefore(loginForm);
-                            window.location.href = response;
-                            return;
-                        }
-                    }
-                });
-                return;
-            }
 
             AJS.$.ajax({
                 url: AJS.contextPath() + "/plugins/servlet/saml/getajaxconfig?param=idpRequired",
