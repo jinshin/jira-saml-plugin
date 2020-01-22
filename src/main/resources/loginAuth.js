@@ -22,9 +22,15 @@ AJS.$(function() {
             loginForm.hide();
 
             if (loginFormId == "login-form" || loginFormId == "loginform") {
+<<<<<<< HEAD
                 AJS.$('<div class="field-group"><a class="aui-button aui-style aui-button-primary" href="' + AJS.contextPath() + '/plugins/servlet/saml/auth" style="align:center;">Fraglab SSO Login</a></div><h2 style="margin-top:10px"></h2>').insertBefore(AJS.$("#" + loginFormId + " .field-group:first-child"));
             } else {
                 AJS.$('<div class="field-group"><a class="aui-button aui-style aui-button-primary" href="' + AJS.contextPath() + '/plugins/servlet/saml/auth" style="margin-left:100px;margin-top:5px;">Fraglab SSO Login</a></div>').insertBefore(AJS.$("#gadget-0"));
+=======
+                AJS.$('<div class="field-group"><a class="aui-button aui-style aui-button-primary" href="' + AJS.contextPath() + '/plugins/servlet/saml/auth" style="align:center;">SSO Login</a></div><h2 style="margin-top:10px"></h2>').insertBefore(AJS.$("#" + loginFormId + " .field-group:first-child"));
+            } else {
+                AJS.$('<div class="field-group"><a class="aui-button aui-style aui-button-primary" href="' + AJS.contextPath() + '/plugins/servlet/saml/auth" style="margin-left:100px;margin-top:5px;">SSO Login</a></div>').insertBefore(AJS.$("#gadget-0"));
+>>>>>>> 2942c362ca8756e9871b079e9f938f8961e5477e
             }
 
             var query = location.search.substr(1);
