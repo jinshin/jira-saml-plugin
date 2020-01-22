@@ -18,7 +18,7 @@
         #end
     </div>
     #end
-<form class="aui" name="saml2pluginjira-configure-form" method="POST"
+<form class="aui config_form" name="saml2pluginjira-configure-form" method="POST"
       action="${req.contextPath}/secure/admin/saml2pluginjira.configure.jspa">
 
     <input type="hidden" name="submitAction" value="submit"/>
@@ -29,22 +29,17 @@
     #end
 
     <div class="field-label">$i18n.getText("saml2plugin.admin.field.samlEndpoint")</div>
-    <div>
-        <input class="field-input" id="samlEndpoint" type="text" disabled="disabled"
+    <div class="config_form_copy_container">
+        <input class="field-input" id="samlEndpoint" type="text"
                value="$urlPrefix${req.serverName}:${req.serverPort}${req.contextPath}/plugins/servlet/saml/auth">
-        <input class="aui-button aui-button-primary" id="copy-button" value="Copy"
-               style="font-size:12px;margin-left:-65px;width:55px;padding-bottom:2px;"/>
-            <span id="endpoint-copied"
-                  style="visibility:hidden;color:grey;font-size:12px;margin-left:10px;">$i18n.getText(
-                "saml2plugin.admin.endpoint-copied")</span>
     </div>
     <div class="field-desc">$i18n.getText("saml2plugin.admin.field.samlEndpoint.desc")</div>
     <div class="field-label">$i18n.getText("saml2plugin.admin.field.loginUrl")</div>
     <input class="field-input" type="text" name="loginUrl" id="loginUrl" value="$textutils.htmlEncode( $loginUrl )"/>
     <div class="field-desc">$i18n.getText("saml2plugin.admin.field.loginUrl.desc")</div>
-##        <div class="field-label">$i18n.getText("saml2plugin.admin.field.logoutUrl")</div>
-##        <input class="field-input" type="text" name="logoutUrl" id="logoutUrl" value="$textutils.htmlEncode( $logoutUrl )"/>
-##        <div class="field-desc">$i18n.getText("saml2plugin.admin.field.logoutUrl.desc")</div>
+        <div class="field-label">$i18n.getText("saml2plugin.admin.field.logoutUrl")</div>
+        <input class="field-input" type="text" name="logoutUrl" id="logoutUrl" value="$textutils.htmlEncode( $logoutUrl )"/>
+        <div class="field-desc">$i18n.getText("saml2plugin.admin.field.logoutUrl.desc")</div>
     <div class="field-label">$i18n.getText("saml2plugin.admin.field.uidAttribute")</div>
     <input class="field-input" type="text" name="uidAttribute" id="uidAttribute"
            value="$textutils.htmlEncode( $uidAttribute)"/>
@@ -63,7 +58,7 @@
     <div class="field-label">
         <input type="checkbox" name="idpRequired" id="idpRequired" class="checkbox"
             #if ($idpRequired.equals("true"))
-               checked
+              checked
             #end>$i18n.getText("saml2plugin.admin.field.idpRequired")</div>
     <div class="field-desc" style="margin-left:20px;">$i18n.getText("saml2plugin.admin.field.idpRequired.desc")</div>
     <div class="field-label">

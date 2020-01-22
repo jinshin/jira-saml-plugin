@@ -20,9 +20,6 @@
 
   <web-resource key="admin-resources" name="Admin web resources">
     <resource name="configPlugin.css" type="download" location="configPlugin.css"/>
-    <resource name="ZeroClipboard.js" type="download" location="ZeroClipboard.js"/>
-    <resource name="ZeroClipboard.swf" type="download" location="ZeroClipboard.swf"/>
-    <resource name="configPlugin.js" type="download" location="configPlugin.js"/>
     <context>atl.admin</context>
   </web-resource>
 

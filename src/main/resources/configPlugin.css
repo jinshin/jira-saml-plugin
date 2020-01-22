@@ -1,22 +1,102 @@
-.field-label {
-  font-weight:bold;
-  margin-bottom:0px;
+.config_form_error {
+  margin: 0 0 30px;
+  padding-left: 15px;
+}
+.config_form_error p {
+  margin: 10px 0 0;
+}
+.config_form_error p:first-child {
+  margin: 0;
+}
+form.config_form {
 }
 
-.field-input {
-  padding:5px;
-  width:500px;
-  margin-top:0px;
+/* labels */
+form.config_form .field-label {
+  font-weight: bold;
+  font-size: 12px;
+  margin: 0 0 5px;
 }
 
-.field-desc {
-  margin-top:0px;
-  width:500px;
-  margin-bottom:5px;
-  font-size:10px;
-  color:grey;
+/* input */
+form.config_form .field-input {
+  border-radius: 4px;
+  outline: 0;
+  border: 1px solid #ccc;
+  padding: 8px;
+  width: 500px;
+  margin: 0 0 5px;
+  font-size: 12px;
+  font-family: Arial, Sans-serif;
 }
 
-form.aui {
+/* description */
+form.config_form .field-desc {
+  width: 500px;
+  font-size: 11px;
+  color: #a0a0a0;
+  margin: 0 0 15px;
+}
+
+/* buttons */
+form.config_form .aui-button,
+form.config_form .aui-button:focus {
+  background: #3498db;
+  text-shadow: none;
+  border: none;
+  outline: 0;
+  text-decoration: none;
+}
+form.config_form .aui-button:hover,
+form.config_form .aui-button:active,
+form.config_form .aui-button.zeroclipboard-is-hover {
+  background: #2c86c3;
+}
+
+/* copy url */
+form.config_form .config_form_copy {
+  font-size: 12px;
+  margin-left: -57px;
+  width: 50px;
+  padding: 6px 10px;
+  height: auto;
+  line-height: normal;
+}
+form.config_form .config_form_copy_container {
+  position: relative;
+}
+form.config_form .config_form_copy_container .field-input {
+  background-color: #f3f4f6;
+}
+form.config_form .config_form_copied {
+  visibility: hidden;
+  color: #a0a0a0;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+/* checkbox */
+form.config_form .field-label-checkbox {
+  position: relative;
+  padding-left: 20px;
+}
+form.config_form .field-label-checkbox .checkbox {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  margin: 0;
+}
+form.config_form .field-desc-checkbox {
   margin-left: 20px;
+}
+
+/* save */
+form.config_form div.config_form_actions {
+  margin-top: 30px;
+}
+form.config_form div.config_form_actions .aui-button {
+  height: 40px;
+  line-height: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
