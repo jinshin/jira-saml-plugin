@@ -37,9 +37,15 @@
     <div class="field-label">$i18n.getText("saml2plugin.admin.field.loginUrl")</div>
     <input class="field-input" type="text" name="loginUrl" id="loginUrl" value="$textutils.htmlEncode( $loginUrl )"/>
     <div class="field-desc">$i18n.getText("saml2plugin.admin.field.loginUrl.desc")</div>
+
         <div class="field-label">$i18n.getText("saml2plugin.admin.field.logoutUrl")</div>
         <input class="field-input" type="text" name="logoutUrl" id="logoutUrl" value="$textutils.htmlEncode( $logoutUrl )"/>
         <div class="field-desc">$i18n.getText("saml2plugin.admin.field.logoutUrl.desc")</div>
+
+        <div class="field-label">$i18n.getText("saml2plugin.admin.field.buttonText")</div>
+        <input class="field-input" type="text" name="buttonText" id="buttonText" value="$textutils.htmlEncode( $buttonText )"/>
+        <div class="field-desc">$i18n.getText("saml2plugin.admin.field.buttonText.desc")</div>
+
     <div class="field-label">$i18n.getText("saml2plugin.admin.field.uidAttribute")</div>
     <input class="field-input" type="text" name="uidAttribute" id="uidAttribute"
            value="$textutils.htmlEncode( $uidAttribute)"/>

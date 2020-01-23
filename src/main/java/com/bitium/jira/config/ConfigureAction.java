@@ -20,10 +20,11 @@ public class ConfigureAction extends JiraWebActionSupport {
 
 	private String loginUrl;
 	private String logoutUrl;
+	private String buttonText;
 	private String entityId;
 	private String uidAttribute;
 	private String autoCreateUser;
-    private String defaultAutoCreateUserGroup;
+        private String defaultAutoCreateUserGroup;
 	private String x509Certificate;
 	private String idpRequired;
 	private String maxAuthenticationAge;
@@ -98,13 +99,22 @@ public class ConfigureAction extends JiraWebActionSupport {
         this.defaultAutoCreateUserGroup = defaultAutoCreateUserGroup;
     }
 
-    public String getLogoutUrl() {
+       public String getLogoutUrl() {
 		return logoutUrl;
 	}
 
 	public void setLogoutUrl(String logoutUrl) {
 		this.logoutUrl = logoutUrl;
 	}
+
+       public String getButtonText() {
+		return buttonText;
+	}
+
+	public void setButtonText(String buttonText) {
+		this.buttonText = buttonText;
+	}
+
 
 	public String getLoginUrl() {
 		return loginUrl;
@@ -162,6 +172,7 @@ public class ConfigureAction extends JiraWebActionSupport {
 				addErrorMessage(getText("saml2Plugin.admin.loginUrlInvalid"));
 			}
 		}
+
 		if (StringUtils.isBlank(getLogoutUrl())) {
 			//addActionError(getText("saml2Plugin.admin.logoutUrlEmpty"));
 		} else {
@@ -171,6 +182,7 @@ public class ConfigureAction extends JiraWebActionSupport {
 				addErrorMessage(getText("saml2Plugin.admin.logoutUrlInvalid"));
 			}
 		}
+
 		if (StringUtils.isBlank(getEntityId())) {
 			addErrorMessage(getText("saml2Plugin.admin.entityIdEmpty"));
 		}
@@ -208,6 +220,7 @@ public class ConfigureAction extends JiraWebActionSupport {
 		if (getSubmitAction() == null || getSubmitAction().equals("")) {
 			setLoginUrl(saml2Config.getLoginUrl());
 			setLogoutUrl(saml2Config.getLogoutUrl());
+			setButtonText(saml2Config.getButtonText());
 			setEntityId(saml2Config.getIdpEntityId());
 			setUidAttribute(saml2Config.getUidAttribute());
 			setX509Certificate(saml2Config.getX509Certificate());
@@ -246,6 +259,7 @@ public class ConfigureAction extends JiraWebActionSupport {
 		}
 		saml2Config.setLoginUrl(getLoginUrl());
 		saml2Config.setLogoutUrl(getLogoutUrl());
+		saml2Config.setButtonText(getButtonText());
 		saml2Config.setEntityId(getEntityId());
 		saml2Config.setUidAttribute(getUidAttribute());
 		saml2Config.setX509Certificate(getX509Certificate());
