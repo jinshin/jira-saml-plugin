@@ -2,7 +2,14 @@ AJS.$(function() {
 
  	if (location.pathname == "/secure/Logout!default.jspa") {
 		doLogout();
+		return;
         };
+
+        if (location.pathname.startsWith("/secure/admin/") == true) {
+                //console.log("Admin Console");
+		return;
+        };
+
 
         if (AJS.$("#login-form").length) {
             loadCorpLogin(AJS.$("#login-form"));
@@ -42,7 +49,7 @@ AJS.$(function() {
                 error: function() {},
                 success: function(response) {
                     if (response != "") {
-                       console.log(response);
+                       //console.log(response);
                        logbutton = document.getElementById('idSSOButton');
                        logbutton.innerHTML=response;
                     }                 
@@ -79,6 +86,8 @@ AJS.$(function() {
                     AJS.$(message).insertBefore(loginForm);
                 }
             });
+
+            //Avoid breaking admin access
 
             AJS.$.ajax({
                 url: AJS.contextPath() + "/plugins/servlet/saml/getajaxconfig?param=idpRequired",
