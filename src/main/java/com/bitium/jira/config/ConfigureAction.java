@@ -27,6 +27,8 @@ public class ConfigureAction extends JiraWebActionSupport {
         private String defaultAutoCreateUserGroup;
 	private String x509Certificate;
 	private String idpRequired;
+        private String allowOverride;
+	private String overridePin;
 	private String maxAuthenticationAge;
 	private String success = "";
 	private String submitAction;
@@ -50,6 +52,25 @@ public class ConfigureAction extends JiraWebActionSupport {
 	public void setIdpRequired(String idpRequired) {
 		this.idpRequired = idpRequired;
 	}
+
+
+	public String getAllowOverride() {
+		return allowOverride;
+	}
+
+	public void setAllowOverride(String allowOverride) {
+		this.allowOverride = allowOverride;
+	}
+
+
+	public String getOverridePin() {
+		return overridePin;
+	}
+
+	public void setOverridePin(String overridePin) {
+		this.overridePin = overridePin;
+	}
+
 
 	public String getX509Certificate() {
 		return x509Certificate;
@@ -203,6 +224,18 @@ public class ConfigureAction extends JiraWebActionSupport {
 		} else {
 			setIdpRequired("true");
 		}
+
+		if (StringUtils.isBlank(getAllowOverride())) {
+			setAllowOverride("false");
+		} else {
+			setAllowOverride("true");
+		}
+
+		if (StringUtils.isBlank(getOverridePin()) & (this.allowOverride == "true") ) {
+                        addErrorMessage(getText("saml2Plugin.admin.needToSetPin"));
+		} 
+
+
 		if (StringUtils.isBlank(getAutoCreateUser())) {
 			setAutoCreateUser("false");
 		} else {
@@ -224,12 +257,24 @@ public class ConfigureAction extends JiraWebActionSupport {
 			setEntityId(saml2Config.getIdpEntityId());
 			setUidAttribute(saml2Config.getUidAttribute());
 			setX509Certificate(saml2Config.getX509Certificate());
+
 			String idpRequired = saml2Config.getIdpRequired();
 			if (idpRequired != null) {
 				setIdpRequired(idpRequired);
 			} else {
 				setIdpRequired("false");
 			}
+
+		String allowOverride = saml2Config.getAllowOverride();
+
+		if (allowOverride != null) {
+			setAllowOverride(allowOverride);
+		} else {
+			setAllowOverride("false");
+		}
+
+		setOverridePin(saml2Config.getOverridePin());
+
 			String autoCreateUser = saml2Config.getAutoCreateUser();
 			if (autoCreateUser != null) {
 				setAutoCreateUser(autoCreateUser);
@@ -264,9 +309,11 @@ public class ConfigureAction extends JiraWebActionSupport {
 		saml2Config.setUidAttribute(getUidAttribute());
 		saml2Config.setX509Certificate(getX509Certificate());
 		saml2Config.setIdpRequired(getIdpRequired());
+                saml2Config.setAllowOverride(getAllowOverride());
+		saml2Config.setOverridePin(getOverridePin());
 		saml2Config.setAutoCreateUser(getAutoCreateUser());
-        saml2Config.setAutoCreateUserDefaultGroup(getDefaultAutoCreateUserGroup());
-        saml2Config.setMaxAuthenticationAge(Long.parseLong(getMaxAuthenticationAge()));
+                saml2Config.setAutoCreateUserDefaultGroup(getDefaultAutoCreateUserGroup());
+                saml2Config.setMaxAuthenticationAge(Long.parseLong(getMaxAuthenticationAge()));
         
 		setSuccess("success");
 		return "success";

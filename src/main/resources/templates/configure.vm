@@ -61,12 +61,26 @@
     <input class="field-input" type="text" name="maxAuthenticationAge" id="maxAuthenticationAge"
            value="$maxAuthenticationAge"/>
     <div class="field-desc">$i18n.getText("saml2plugin.admin.field.maxAuthenticationAge.desc")</div>
+
     <div class="field-label">
         <input type="checkbox" name="idpRequired" id="idpRequired" class="checkbox"
             #if ($idpRequired.equals("true"))
               checked
             #end>$i18n.getText("saml2plugin.admin.field.idpRequired")</div>
     <div class="field-desc" style="margin-left:20px;">$i18n.getText("saml2plugin.admin.field.idpRequired.desc")</div>
+ 
+    <div class="field-label">
+        <input type="checkbox" name="allowOverride" id="allowOverride" class="checkbox"
+            #if ($allowOverride.equals("true"))
+               checked
+            #end>$i18n.getText("saml2plugin.admin.field.allowOverride")</div>
+    <div class="field-desc" style="margin-left:20px;">$i18n.getText("saml2plugin.admin.field.allowOverride.desc")</div>
+
+    <div class="field-label">$i18n.getText("saml2plugin.admin.field.overridePin")</div>
+    <input class="field-input" type="text" name="overridePin" id="overridePin"
+           value="$overridePin"/>
+    <div class="field-desc">$i18n.getText("saml2plugin.admin.field.overridePin.desc")</div>
+
     <div class="field-label">
         <input type="checkbox" name="autoCreateUser" id="autoCreateUser" class="checkbox"
             #if ($autoCreateUser.equals("true"))

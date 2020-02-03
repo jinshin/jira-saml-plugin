@@ -10,6 +10,11 @@ AJS.$(function() {
 		return;
         };
 
+        //We might need local login
+        if(location.search.startsWith('?uselocallogin')) {
+               return;
+        };
+
 
         if (AJS.$("#login-form").length) {
             loadCorpLogin(AJS.$("#login-form"));
@@ -73,21 +78,23 @@ AJS.$(function() {
 
             setButtonText();
 
+            var errorDetected = 0;
+
             var query = location.search.substr(1);
             query.split("&").forEach(function(part) {
                 var item = part.split("=");
                 if (item.length == 2 && item[0] == "samlerror") {
                     var errorKeys = {};
-                    errorKeys["general"] = "General SAML configuration error";
-                    errorKeys["user_not_found"] = "User was not found";
-                    errorKeys["plugin_exception"] = "SAML plugin internal error";
-                    loginForm.show();
+                    errorKeys["general"] = "No access. Contact your PM for Jira account.";
+                    errorKeys["user_not_found"] = "No access. Contact your PM for Jira account.";
+                    errorKeys["plugin_exception"] = "No access. Contact your PM for Jira account.";
                     var message = '<div class="aui-message closeable error">' + errorKeys[item[1]] + '</div>';
                     AJS.$(message).insertBefore(loginForm);
+                    errorDetected = 1;
                 }
             });
 
-            //Avoid breaking admin access
+            if ( errorDetected == 1 ) { return; };
 
             AJS.$.ajax({
                 url: AJS.contextPath() + "/plugins/servlet/saml/getajaxconfig?param=idpRequired",
