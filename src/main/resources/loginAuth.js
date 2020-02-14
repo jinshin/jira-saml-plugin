@@ -68,7 +68,7 @@ AJS.$(function() {
             loginFormId = loginForm[0].id
             loginForm.hide();
 
-            var ButtonText = "Fraglab SSO Login"
+            var ButtonText = "SSO Login"
 
             if (loginFormId == "login-form" || loginFormId == "loginform") {
                 AJS.$('<div class="field-group"><a id="idSSOButton" class="aui-button aui-style aui-button-primary" href="' + AJS.contextPath() + '/plugins/servlet/saml/auth" style="align:center;">' + ButtonText + '</a></div><h2 style="margin-top:10px"></h2>').insertBefore(AJS.$("#" + loginFormId + " .field-group:first-child"));

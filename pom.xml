@@ -5,7 +5,7 @@
     <groupId>com.bitium.jira</groupId>
     <artifactId>SAML2PluginJira</artifactId>
     <version>1.0.9</version>
-    <name>Fraglab SAML 2.0 Single Sign-On for Jira</name>
+    <name>SAML 2.0 Single Sign-On for Jira</name>
     <description>Easily configure Jira to support SAML 2.0</description>
     <packaging>atlassian-plugin</packaging>
     <dependencies>
